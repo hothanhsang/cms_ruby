@@ -1,5 +1,9 @@
 module PagesHelper
 	def url_for_page(page)
-		page.slug.present? ? page.slug : "pages/#{page.id}"
+		if page.slug.present?
+			root_path + page.slug
+		else
+			"pages/#{page.id}"
+		end
 	end
 end
